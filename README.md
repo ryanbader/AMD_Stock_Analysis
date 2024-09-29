@@ -2,7 +2,7 @@
 
 ## **Overview**
 
-This project examines the relationship between **AMD’s stock performance** and key macroeconomic factors, with a focus on the **Federal Reserve’s interest rate decisions** and **Earnings Per Share (EPS)** trends. Data was gathered from the **Alpha Vantage API** and visualized in **Power BI** to reveal correlations between AMD’s stock price movements and changes in the **federal funds rate**.
+This project examines the relationship between **AMD’s stock performance** and key macroeconomic factors, with a focus on the **Federal Reserve’s interest rate** and **Earnings Per Share (EPS)** trends. Data was gathered from the **Alpha Vantage API** and visualized in **Power BI** to reveal correlations between AMD’s stock price movements and changes in the **federal funds rate**.
 
 ---
 
@@ -10,7 +10,7 @@ This project examines the relationship between **AMD’s stock performance** and
 
 ### 1. **Creating the SQLite Database and Tables**
 
-A **SQLite database** was created using Python’s `sqlite3` library to store both AMD's weekly stock price data and the Federal Reserve's interest rate data. This provided a structured way to efficiently manage and retrieve the data for analysis.
+A **SQLite database** was created using Python’s `sqlite3` library to store AMD's weekly stock price data, the Federal Reserve's interest rate data, etc. This provided a structured way to efficiently manage and retrieve the data for analysis.
 
 - A table named `weekly_adjusted_stocks` was established to store AMD’s weekly stock data, which includes columns for `open`, `high`, `low`, `close`, `volume`, and `date`.
 - A second table, `federal_funds_rate`, was created to store the Federal Reserve's interest rate data, with columns for `rate` and `date`.
