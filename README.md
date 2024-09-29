@@ -49,6 +49,6 @@ To ensure consistency across all visuals, a **Date Table** was generated in Powe
 
 - [Data Retrieval Script](AMD_Stock_Data.py): Python script that pulls data from Alpha Vantage API and stores it in an SQLite database.
 - [Power BI Report](AMD_Stock_Analysis.pbix): Power BI report that visualizes AMD's stock performance and interest rate data.
-- [Power BI Report](AMD_Stock_Analysis.pdf): Power BI report from above as a pdf.
+- [Report PDF](AMD_Stock_Analysis.pdf): Power BI report from above as a pdf.
 
 ---
