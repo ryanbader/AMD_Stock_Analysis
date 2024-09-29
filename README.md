@@ -1,4 +1,4 @@
-# ** Exploring AMD's Stock Surge Using Power BI** 
+## **Exploring AMD's Stock Surge Using Power BI** 
 
 ## **Overview**
 
