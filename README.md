@@ -45,4 +45,9 @@ To ensure consistency across all visuals, a **Date Table** was generated in Powe
   
 - **Resilience in Stock Performance**: Despite the volatility caused by rate changes, AMD demonstrated resilience, achieving a new **all-time high in 2024** due to market expectations of future rate cuts and strong earnings.
 
+## Project Files
+
+- [Data Retrieval Script](AMD_Stock_Data.py): Python script that pulls data from Alpha Vantage API and stores it in an SQLite database.
+- [Power BI Report](AMD_Stock_Analysis.pbix): Power BI report that visualizes AMD's stock performance and interest rate data.
+
 ---
