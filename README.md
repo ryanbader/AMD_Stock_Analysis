@@ -16,7 +16,7 @@ A **SQLite database** was created using Python’s `sqlite3` library to store AM
 - A second table, `federal_funds_rate`, was created to store the Federal Reserve's interest rate data, with columns for `rate` and `date`.
 - Other tables were also created, a few more were used in the visuals depicted in PowerBI.
 
-#### **Examples of Data Fetched:**
+#### **Examples of Data Insertion:**
 - **Weekly stock prices** for AMD were retrieved and inserted into the `weekly_adjusted_stocks` table. Each record was associated with a unique date to prevent duplicates.
 - Similarly, data on the **federal funds rate** was fetched and inserted into the `federal_funds_rate` table, ensuring that each rate matched the corresponding time period.
 
