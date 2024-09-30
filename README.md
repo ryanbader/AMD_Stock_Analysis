@@ -16,7 +16,7 @@ A **SQLite database** was created using Python’s `sqlite3` library to store AM
 - A second table, `federal_funds_rate`, was created to store the Federal Reserve's interest rate data, with columns for `rate` and `date`.
 - Other tables were also created, a few more were used in the visuals depicted in PowerBI.
 
-#### **Fetching Data:**
+#### **Examples of Data Fetched:**
 - **Weekly stock prices** for AMD were retrieved and inserted into the `weekly_adjusted_stocks` table. Each record was associated with a unique date to prevent duplicates.
 - Similarly, data on the **federal funds rate** was fetched and inserted into the `federal_funds_rate` table, ensuring that each rate matched the corresponding time period.
 
@@ -36,6 +36,24 @@ To ensure consistency across all visuals, a **Date Table** was generated in Powe
 
 - Relationships between the **Date Table** and the `weekly_adjusted_stocks`, `federal_funds_rate`, etc. were established, aligning the time-series data across different datasets.
 - This approach helped create accurate representations of **AMD's stock performance** over time in relation to interest rate changes.
+
+### 4. **Adding Visuals in Power BI**
+
+Several interactive visuals were developed in **Power BI** to illustrate the relationship between AMD's stock performance (2016 - present) and key economic indicators, offering deeper insights into market trends:
+
+- **Line and Column Chart (Stock Price vs. Federal Funds Rate):**
+   - This chart tracked the relationship between **stock price fluctuations** and **interest rate adjustments**, highlighting notable correlations during **rate cuts and hikes**.
+
+- **Line and Column Chart (Stock Price vs. Earnings Per Share):**
+   - This visual underscored how **corporate earnings**, particularly changes in **EPS**, influenced stock prices over the same period.
+
+- **100% Stacked Column Chart (Total Assets vs. Liabilities):**
+   - This chart provided a clear visualization of **AMD’s evolving financial structure**, highlighting a **decrease in liabilities relative to assets**, signaling improved financial stability.
+
+- **Line Chart (Logarithmic Scale Stock Price vs. Linear Scale Stock Price):**
+   - The **log scale** helped normalize large price jumps, allowing for a clearer interpretation of **long-term growth trends** without distortion caused by short-term volatility.
+
+These visuals offered a comprehensive view of how **macroeconomic shifts**, **company earnings**, and **financial health indicators** influenced AMD’s stock trajectory, providing valuable insights into its performance over time.
 
 ---
 
