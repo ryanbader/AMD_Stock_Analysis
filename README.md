@@ -63,10 +63,10 @@ These visuals offered a comprehensive view of how **macroeconomic shifts**, **co
   
 - **Resilience in Stock Performance**: Despite the volatility caused by rate changes, AMD demonstrated resilience, achieving a new **all-time high in 2024** due to market expectations of future rate cuts and strong earnings.
 
-## Project Files
+## **📄 Project Files**
 
 - [Data Retrieval Script](AMD_Stock_Data.py): Python script that pulls data from Alpha Vantage API and stores it in an SQLite database.
 - [Power BI Report](AMD_Stock_Analysis.pbix): Power BI report that visualizes AMD's stock performance and interest rate data.
-- [Report PDF](AMD_Stock_Analysis.pdf): Power BI report from above as a pdf.
+- [Report PDF](AMD_Stock_Analysis.pdf): Power BI report downloadable as a pdf.
 
 ---
