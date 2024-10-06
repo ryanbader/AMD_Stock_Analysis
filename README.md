@@ -36,8 +36,7 @@ The project uses a two-step method to **retrieve financial data** from an extern
 
 The **SQLite database** was connected to Power BI using an **ODBC (Open Database Connectivity)** connector. An ODBC data source was set up for the SQLite database, allowing Power BI to directly access and retrieve the stored data for visualization.
 
-- This connection enabled Power BI to query and pull data from the `stocks.db` database, linking the stock price and federal funds rate data for analysis.
-
+- This connection enabled Power BI to query and pull data from the `stocks.db` database.
 ---
 
 ### 4. **Creating a Date Table in Power BI**
