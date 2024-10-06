@@ -1,4 +1,4 @@
-## **📈 Exploring AMD's Stock Surge (2016 - Present) Using Power BI** 
+## **📈 Exploring AMD's Stock Surge (2016 - Present)** 
 
 ## **Overview**
 
