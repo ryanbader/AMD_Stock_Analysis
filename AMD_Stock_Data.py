@@ -10,6 +10,7 @@ def create_tables():
     with sqlite3.connect("stocks.db") as conn:
         cursor = conn.cursor()
 
+        # Existing tables
         create_inflation_table_query = """
         CREATE TABLE IF NOT EXISTS inflation (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -65,6 +66,39 @@ def create_tables():
         """
         cursor.execute(create_stock_table_query)
 
+        # New tables for EPS, Balance Sheet, and Income Statement
+        create_eps_table_query = """
+        CREATE TABLE IF NOT EXISTS earnings_per_share (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            date TEXT,
+            eps REAL,
+            UNIQUE(date)
+        );
+        """
+        cursor.execute(create_eps_table_query)
+
+        create_balance_sheet_table_query = """
+        CREATE TABLE IF NOT EXISTS balance_sheet (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            date TEXT,
+            assets REAL,
+            liabilities REAL,
+            UNIQUE(date)
+        );
+        """
+        cursor.execute(create_balance_sheet_table_query)
+
+        create_income_statement_table_query = """
+        CREATE TABLE IF NOT EXISTS income_statement (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            date TEXT,
+            revenue REAL,
+            expenses REAL,
+            UNIQUE(date)
+        );
+        """
+        cursor.execute(create_income_statement_table_query)
+
         conn.commit()
 
 def fetch_financial_data(function_name):
@@ -114,6 +148,41 @@ def insert_real_gdp_data(data):
         insert_query = "INSERT OR IGNORE INTO real_gdp (date, gdp) VALUES (?, ?)"
         for row in gdp_data:
             cursor.execute(insert_query, (row['date'], float(row['value'])))
+        conn.commit()
+
+def insert_eps_data(data):
+    eps_data = data.get('data', data.get('data_series', []))
+    with sqlite3.connect("stocks.db") as conn:
+        cursor = conn.cursor()
+        insert_query = "INSERT OR IGNORE INTO earnings_per_share (date, eps) VALUES (?, ?)"
+        for row in eps_data:
+            cursor.execute(insert_query, (row['date'], float(row['value'])))
+        conn.commit()
+
+def insert_balance_sheet_data(data):
+    balance_data = data.get('data', data.get('data_series', []))
+    with sqlite3.connect("stocks.db") as conn:
+        cursor = conn.cursor()
+        insert_query = "INSERT OR IGNORE INTO balance_sheet (date, assets, liabilities) VALUES (?, ?, ?)"
+        for row in balance_data:
+            cursor.execute(insert_query, (
+                row['date'], 
+                float(row['assets']), 
+                float(row['liabilities'])
+            ))
+        conn.commit()
+
+def insert_income_statement_data(data):
+    income_data = data.get('data', data.get('data_series', []))
+    with sqlite3.connect("stocks.db") as conn:
+        cursor = conn.cursor()
+        insert_query = "INSERT OR IGNORE INTO income_statement (date, revenue, expenses) VALUES (?, ?, ?)"
+        for row in income_data:
+            cursor.execute(insert_query, (
+                row['date'], 
+                float(row['revenue']), 
+                float(row['expenses'])
+            ))
         conn.commit()
 
 def fetch_weekly_adjusted_stock_data(symbol):
@@ -183,6 +252,18 @@ def main():
     stock_data = fetch_weekly_adjusted_stock_data(symbol)
     if stock_data:
         insert_stock_data_to_db(symbol, stock_data)
+
+    eps_data = fetch_financial_data('EARNINGS')
+    if eps_data:
+        insert_eps_data(eps_data)
+
+    balance_sheet_data = fetch_financial_data('BALANCE_SHEET')
+    if balance_sheet_data:
+        insert_balance_sheet_data(balance_sheet_data)
+
+    income_statement_data = fetch_financial_data('INCOME_STATEMENT')
+    if income_statement_data:
+        insert_income_statement_data(income_statement_data)
 
 if __name__ == "__main__":
     main()
