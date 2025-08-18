@@ -22,13 +22,13 @@ The project uses a two-step method to **retrieve financial data** from an extern
 
 #### **Fetching Data**:
 - **API Request**: Data such as stock prices or economic indicators are retrieved using the **Alpha Vantage API**. The function `fetch_financial_data(function_name)` is responsible for this process.
-   - The function sends an API request with the specific `function_name` (e.g., `'EARNINGS'`, `'TIME_SERIES_WEEKLY'`) and the API key.
+   - The function sends an API request with the specific `function_name` (e.g., `'EARNINGS'`) and the API key.
    - It validates the API response by checking the HTTP status code. If the request is successful, the data is returned in JSON format.
      
 #### **Inserting Data**:
-- After successfully retrieving the data, it is inserted into an **SQLite database** (`stocks.db`) using the `insert_eps_data()` or similar insertion functions.
-   - These functions open a connection to the database and execute **SQL queries** to store the data in structured tables.
-   - The data is inserted into the appropriate table, such as `earnings`, ensuring that no duplicate entries are created thanks to the `INSERT OR IGNORE` SQL command.
+- After successfully retrieving the data, it is inserted into an **SQLite database** (`stocks.db`) using the `insert_data()` function.
+   - This functions opens a connection to the database and executes all **SQL queries** from each individual stock metrics' insertion functions to store the data in structured tables.
+   - The data is inserted into the appropriate table, such as `earnings`, ensuring that no duplicate entries are created thanks to the `INSERT OR REPLACE` SQL command.
 
 ---
 
