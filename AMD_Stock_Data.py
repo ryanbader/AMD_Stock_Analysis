@@ -57,7 +57,6 @@ def create_tables():
         create_stock_table_query = """
         CREATE TABLE IF NOT EXISTS weekly_adjusted_stocks (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            symbol TEXT,
             date TEXT,
             open REAL,
             high REAL,
@@ -145,7 +144,6 @@ def fetch_financial_data(function_name):
 
     if response.status_code == 200:
         data = response.json()
-        print(data)
         fd = FinancialData.model_validate(data)
         return fd
     else:
@@ -224,16 +222,16 @@ def insert_inflation_data(inflation_data: list[BasicData]):
 def insert_stock_data_to_db(stock_data: list[StockData]):
     data = [(i.date, i.open, i.high, i.low, i.close, i.volume) for i in stock_data]
     insert_data(
-        """INSERT OR REPLACE INTO weekly_adjusted_stocks (date, open, high, low, close, volume) VALUES (?, ?, ?, ?, ?, ?, ?)""",
+        """INSERT OR REPLACE INTO weekly_adjusted_stocks (date, open, high, low, close, volume) VALUES (?, ?, ?, ?, ?, ?)""", 
         data,
-    )
+        )
 
 
 def main():
 
     create_tables()
 
-    symbol = "AMD"
+    stock_symbol = "AMD"
 
     inflation_data = fetch_financial_data("CPI")
     if inflation_data:
@@ -251,7 +249,7 @@ def main():
     if gdp_data:
         insert_real_gdp_data(gdp_data.data)
 
-    stock_data = fetch_financial_data(symbol)
+    stock_data = fetch_stock_data(stock_symbol)
     if stock_data:
         insert_stock_data_to_db(stock_data.data_series)
 
